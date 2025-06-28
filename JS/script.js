@@ -16,7 +16,7 @@ scrollToTop.addEventListener('click', () => {
 });
 
 // fakestoreapi-დან წამოღებული პროდუქტები
-fetch('https://fakestoreapi.com/products?limit=9')
+fetch('https://fakestoreapi.com/products?limit=15')
   .then(res => res.json())
   .then(data => {
     const productList = document.getElementById('product-list');
@@ -46,7 +46,7 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;// mail-ის ფორმატი
   if (!emailPattern.test(email)) {
     alert('Invalid email format.');
     return;
@@ -56,12 +56,13 @@ form.addEventListener('submit', (e) => {
   form.reset();
 });
 
+// headeer-ში ღილაკებზე დაწკაპუნებით სქროლავს
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
     const targetId = this.getAttribute('href');
     const target = document.querySelector(targetId);
-    const offset = 80; // adjust based on header height
+    const offset = 80;
 
     window.scrollTo({
       top: target.offsetTop - offset,
